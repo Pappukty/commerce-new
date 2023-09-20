@@ -1,0 +1,207 @@
+.back-res {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(33, 130, 25, 0.9528186274509804) 71%,
+    rgba(0, 1, 255, 1) 100%
+  );
+}
+.res {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.register {
+  width: 50%;
+
+  height: 98%;
+  margin: 2rem auto;
+  display: flex;
+  box-shadow: 10px 10px 10px 0px rgba(70, 71, 75, 0.5);
+  border: 3px solid blue;
+  flex-direction: column;
+  font-family: var(--font-family);
+  background-color: rgb(14, 13, 13);
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.register:hover {
+  border: 4px solid blueviolet;
+}
+.hed {
+  width: 90%;
+  margin: 0.5rem auto;
+  text-align: center;
+}
+.register-hd {
+  width: 98%;
+  margin: 0 auto;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+.inputRegister {
+  width: 96%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+.inputRegister input {
+  width: 90%;
+  margin: 1rem auto;
+  padding: 12px 46px;
+  background-color: transparent;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 19px;
+  font-weight: 400;
+  color: white;
+  border-radius: 10px;
+  border-bottom: 1px solid white;
+
+  flex-direction: column;
+}
+.select-op {
+  width: 99%;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.select {
+  width: 30%;
+  margin: 0 auto;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  text-align: center;
+  color: blue;
+  border-radius: 3px;
+  background-color: darkkhaki;
+  box-shadow: 10px 5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.image-box {
+  width: 50%;
+  margin: 0rem auto;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 1px solid white;
+}
+
+.image {
+  width: 40%;
+  margin: 0rem auto;
+  padding: 5px 9px;
+  font-size: 13px;
+  font-weight: 400;
+  color: white;
+}
+
+.btn {
+  width: 50%;
+  margin: 1rem auto;
+  display: flex;
+  gap: 2rem;
+}
+.reset-btn {
+  width: 50%;
+  margin: 1rem auto;
+  padding: 5px 12px;
+  font-size: 19px;
+  font-weight: 600;
+  color: white;
+  border-radius: 6px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(33, 130, 25, 0.9528186274509804) 71%,
+    rgba(0, 1, 255, 1) 100%
+  );
+}
+.reset-btn:hover {
+  color: crimson;
+  border: 2px solid springgreen;
+  font-size: 18px;
+  font-weight: 800px;
+}
+.log-link {
+  color: azure;
+}
+.error {
+  color: red;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .register {
+    width: 80%;
+    height: 98%;
+    margin: 0 auto;
+  }
+  .hed {
+    width: 90%;
+    margin: 0.5rem auto;
+    text-align: center;
+  }
+  .register-hd {
+    width: 98%;
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+  }
+  .inputRegister input {
+    width: 97%;
+    margin: 0.3rem auto;
+  }
+  .select {
+    width: 60%;
+    text-align: center;
+
+    margin: 0 auto;
+  }
+  .image-box {
+    width: 96%;
+    margin: 0.5rem auto;
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .image {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .btn {
+    width: 97%;
+    margin: 0 auto;
+  }
+  .log-link {
+    color: azure;
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .error {
+    color: red;
+    font-size: 8px;
+  }
+}

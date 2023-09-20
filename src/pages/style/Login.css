@@ -1,0 +1,170 @@
+.loginPage {
+  background-color: rgb(12, 12, 63);
+  width: 100vw;
+  height: 100vh;
+  font-family: var(--font-family);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(33, 130, 25, 0.9528186274509804) 71%,
+    rgba(0, 1, 255, 1) 100%
+  );
+  align-items: center;
+  display: flex;
+}
+
+.login {
+  width: 40%;
+  height: 90%;
+  margin: 2rem auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(14, 13, 13);
+  border-radius: 20px;
+  cursor: pointer;
+  border: 4px solid blue;
+}
+.title-login {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: azure;
+}
+.input-email {
+  width: 99%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+.input-email input {
+  width: 80%;
+  margin: 1rem auto;
+  padding: 10px 29px;
+  background-color: transparent;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 19px;
+  font-weight: 400;
+  color: white;
+  border-radius: 10px;
+
+  flex-direction: column;
+}
+.submit-btn-btn {
+  width: 98%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.submit-btn {
+  width: 50%;
+  margin: 1rem auto;
+  padding: 5px 12px;
+  font-size: 19px;
+  font-weight: 600;
+  color: white;
+  border-radius: 6px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(33, 130, 25, 0.9528186274509804) 71%,
+    rgba(0, 1, 255, 1) 100%
+  );
+}
+.login-with-google {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-with-google-btn {
+  width: 50%;
+  margin: 1rem auto;
+  padding: 9px 11px;
+  border-radius: 6px;
+}
+.login-test-credential-btn {
+  width: 25%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+
+  background-color: chocolate;
+}
+.login-credential-btn {
+  width: 98%;
+  margin: 0 auto;
+  padding: 5px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 1rem;
+  background-color: aquamarine;
+}
+.res-link {
+  width: 80%;
+  margin: 2rem auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: wheat;
+}
+.signupclick {
+  width: 50%;
+  margin: 1rem auto;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .login {
+    width: 97%;
+    height: 92%;
+    margin: 1rem auto;
+  }
+  .title-login {
+    font-size: 16px;
+    font-weight: 500;
+
+    color: azure;
+  }
+  .input-email {
+    width: 89%;
+    margin: 1rem auto;
+  }
+  .input-email input {
+    width: 85%;
+    margin: 1rem auto;
+  }
+  .login-with-google {
+    width: 80%;
+    width: 0 auto;
+  }
+  .login-with-google-btn {
+    width: 80%;
+    margin: 1rem auto;
+    padding: 9px 11px;
+    border-radius: 6px;
+  }
+
+  .login-test-credential-btn {
+    width: 40%;
+    width: 1rem auto;
+  }
+  .login-credential-btn {
+    width: 98%;
+    width: 0 auto;
+  }
+}
