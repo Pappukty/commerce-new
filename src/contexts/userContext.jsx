@@ -4,15 +4,15 @@ import {
   useState,
   useEffect,
   useReducer,
-} from "react";
+} from 'react';
 
-import { auth, storage } from "../firestore/firebase-config";
-import { uploadBytesResumable, getDownloadURL, ref } from "firebase/storage";
-import { onAuthStateChanged } from "firebase/auth";
-import profileReducer from "../until.Reducers/profileRenducer";
-import { getProfileData } from "../until.Reducers/firebaseFunction";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { auth, storage } from '../firestore/firebase-config';
+import { uploadBytesResumable, getDownloadURL, ref } from 'firebase/storage';
+import { onAuthStateChanged } from 'firebase/auth';
+import profileReducer from '../until.Reducers/profileRenducer';
+import { getProfileData } from '../until.Reducers/firebaseFunction';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserContext = createContext();
 
@@ -25,15 +25,15 @@ const UserProvider = ({ children }) => {
   const [userLoginData, setUserLoginData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
-  const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [selectCity, setSelectCity] = useState("");
-  const [newState, setNewState] = useState("");
-  const [address, setAddress] = useState("");
-  const [gender, setGender] = useState("");
-  const [image, setImage] = useState("");
+  const [id, setId] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [number, setNumber] = useState('');
+  const [selectCity, setSelectCity] = useState('');
+  const [newState, setNewState] = useState('');
+  const [address, setAddress] = useState('');
+  const [gender, setGender] = useState('');
+  const [image, setImage] = useState('');
 
   const [profile, setProfile] = useState(null);
 
@@ -47,27 +47,27 @@ const UserProvider = ({ children }) => {
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
     uploadTask.on(
-      "state_changed",
+      'state_changed',
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         switch (snapshot.state) {
-          case "paused":
-            toast.info("Upload is Paused!");
+          case 'paused':
+            toast.info('Upload is Paused!');
             break;
-          case "running":
-            toast.warning("Waiting for Image Upload!!");
+          case 'running':
+            toast.warning('Waiting for Image Upload!!');
             break;
         }
       },
       (error) => {
-        console.log("Error", error);
-        toast.error("Error... Try Again!");
+        console.log('Error', error);
+        toast.error('Error... Try Again!');
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImage(downloadURL);
-          toast.success("Image Uploaded Successfully!");
+          toast.success('Image Uploaded Successfully!');
         });
       }
     );
@@ -75,7 +75,7 @@ const UserProvider = ({ children }) => {
 
   const fetchProfileData = async () => {
     await getProfileData().then((data) => {
-      dispatch({ type: "GET_PROFILE_DATA", profileData: data });
+      dispatch({ type: 'GET_PROFILE_DATA', profileData: data });
     });
   };
 
@@ -94,16 +94,16 @@ const UserProvider = ({ children }) => {
   const userProfile = () => {
     const filterUser = state.profileData.find((item) => item.email === email);
     if (filterUser) {
-      if (filterUser === "undefined") {
+      if (filterUser === 'undefined') {
         setIsEditing(false);
 
-        setName("nill");
-        setSelectCity("nill");
-        setNewState("nill");
-        setAddress("nill");
-        setGender("nill");
-        setImage("nill");
-        setNumber("nill");
+        setName('nill');
+        setSelectCity('nill');
+        setNewState('nill');
+        setAddress('nill');
+        setGender('nill');
+        setImage('nill');
+        setNumber('nill');
       } else {
         setIsEditing(true);
         setProfile(filterUser.id);
@@ -149,14 +149,13 @@ const UserProvider = ({ children }) => {
     profile,
     fetchProfileData,
   };
-  console.log("ajay");
+
   useEffect(() => {
     fetchProfileData();
   }, []);
 
   useEffect(() => {
     let subscriber = onAuthStateChanged(auth, (user) => {
-      // console.log(auth.currentUser); //returns null now
       if (user) {
         setUserLoginData(user.providerData[0]);
         setEmail(user.providerData[0].email);

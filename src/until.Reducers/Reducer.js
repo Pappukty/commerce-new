@@ -1,6 +1,7 @@
 export const actionType = {
   SET_USER: "SET_USER",
   SET_LOGOUT: "SET_LOGOUT",
+  CLEAR_CART: "CLEAR_CART",
 };
 
 export const reducer = (state, action) => {
@@ -11,6 +12,7 @@ export const reducer = (state, action) => {
         user: action.user,
         isLogin: action.isLogin,
       };
+   
     case actionType.SET_LOGOUT:
       return { ...state, user: null, isLogin: action.isLogin };
     default:

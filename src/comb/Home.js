@@ -4,6 +4,8 @@ import "../pages/style/Home.css";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import { FiTruck } from "react-icons/fi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { CiPercent } from "react-icons/ci";
 import { FaHeadphones } from "react-icons/fa";
@@ -49,7 +51,7 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
       <div className="top_banner">
         <div className="container">
           <div className="detail">
-            <h2>The Best Note Book Colletion 2023</h2>
+            <h2>The Best Laptop Colletion 2023</h2>
             <Link to="/product">
               shop Now
               <BsArrowRight />
@@ -59,7 +61,8 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
             <img
               src="./img/slider1-img.jpg"
               alt="slider-img"
-              width="480px"
+              // width="480px"
+              className="slider"
             ></img>
           </div>
         </div>
@@ -71,7 +74,7 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
               <img src="./img/Mobile phone.png" alt="Mobile" />
             </div>
             <div className="details">
-              <p>20 products</p>
+              <p className="small-pd">20 products</p>
             </div>
           </div>
           <div className="box">
@@ -79,7 +82,7 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
               <img src="./img/headphone.png" alt="headphone" />
             </div>
             <div className="details">
-              <p>50 products</p>
+              <p className="small-pd">50 products</p>
             </div>
           </div>
           <div className="box">
@@ -87,15 +90,15 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
               <img src="./img/smart watch.png" alt="watch" />
             </div>
             <div className="details">
-              <p>64 products</p>
+              <p className="small-pd">64 products</p>
             </div>
           </div>
           <div className="box">
             <div className="img_box">
-              <img src="./img/cpu heat.jpg" alt="cpu" />
+              <img src="./img/Alexxa.jpg" alt="alexxa" />
             </div>
             <div className="details">
-              <p>63 products</p>
+              <p className="small-pd">63 products</p>
             </div>
           </div>
         </div>
@@ -174,7 +177,7 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
         <div className="container">
           <div className="detail">
             <h4>LATEST TECHNOLOGY ADDED</h4>
-            <h3>Apple iPad 10.2 9th Gen - 2021</h3>
+            <h3>Sony WH-CH520,wireless on-Ear bluetooth headphones</h3>
             <p>
               <BsCurrencyDollar />
               986
@@ -185,10 +188,15 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
             </Link>
           </div>
           <div className="img_box">
-            <img src="./img/image-11.jpg" alt="sliderimg" width="400px"></img>
+            <img
+              src="./img/image-11.jpg"
+              alt="sliderimg"
+              className="slider-1"
+            ></img>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

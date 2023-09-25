@@ -62,7 +62,7 @@ function Nav({ searchbtn }) {
                     <BiUserCircle />
                   </Link>
                 </div>
-                <p>{userName.name ? `${setUserName.name}` : "profile"}</p>
+                {/* <p>{userName.name ? `${setUserName.name}` : "profile"}</p> */}
               </div>
               <div className="second_icon">
                 <Link to="/home" className="link">

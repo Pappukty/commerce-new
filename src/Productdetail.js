@@ -84,4 +84,4 @@ const Productdetail = [
     Img: "./img/p12.jpg",
   },
 ];
-export default Productdetail;
+export { Productdetail };

@@ -1,8 +1,16 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../pages/style/Cart.css";
+import { useNavigate } from "react-router-dom";
+
+import { CartConsumer } from "../contexts/cartContext";
 const Cart = ({ cart, setCart }) => {
+  console.log(cart);
+  const { checkOut } = CartConsumer();
+  const navigate = useNavigate();
   // increace qty
   const incqty = (product) => {
     const exsit = cart.find((x) => {
@@ -42,15 +50,22 @@ const Cart = ({ cart, setCart }) => {
         })
       );
     }
+    toast.success("delete successfully");
   };
   // Total price
   const Totalprice = cart.reduce(
     (price, item) => price + item.qty * item.Price,
     0
   );
+  const OrderNow = () => {
+    setCart([]);
+    navigate("/");
+    toast.success("Your order as been placed");
+  };
+
   return (
-    <>
-      <div className="cartcontainer">
+    <div className="cart-page">
+      <div className="cart-container">
         {cart.length === 0 && (
           <div className="emptycart">
             <h2 className="empty">Cart is Empty</h2>
@@ -97,11 +112,14 @@ const Cart = ({ cart, setCart }) => {
         {cart.length > 0 && (
           <>
             <h2 className="totalprice">total: $ {Totalprice}</h2>
-            <button className="checkout">Checkout</button>
+            <button className="checkout" onClick={OrderNow}>
+              Checkout
+            </button>
           </>
         )}
       </div>
-    </>
+      <ToastContainer />
+    </div>
   );
 };
 

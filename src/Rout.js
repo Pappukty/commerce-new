@@ -4,7 +4,7 @@ import Home from "./comb/Home";
 import Product from "./comb/Product";
 import Cart from "./comb/Cart";
 import Footer from "./comb/Footer";
-import Productdetail from "./Productdetail";
+import { Productdetail } from "./Productdetail";
 import HomeProduct from "./HomeProduct";
 import Login from "./pages/Login";
 import Register from "./pages/Register";

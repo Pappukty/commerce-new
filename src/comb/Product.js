@@ -4,7 +4,7 @@ import { BsCart2 } from "react-icons/bs";
 import { BsEye } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import Productdetail from "../Productdetail";
+import { Productdetail } from "../Productdetail";
 const Product = ({
   product,
   setProduct,

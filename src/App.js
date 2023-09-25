@@ -2,13 +2,19 @@ import React from "react";
 import { useState } from "react";
 import Nav from "./nav";
 import Rout from "./Rout";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "./comb/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Productdetail from "./Productdetail";
+import { Productdetail } from "./Productdetail";
 
 import { BrowserRouter } from "react-router-dom";
 const App = () => {
+  ///
+
+  //
   const [isAuth, setIsAuth] = useState(false);
   //cart
   const [cart, setCart] = useState([]);
@@ -34,7 +40,8 @@ const App = () => {
       alert("This Product is allready added to cart ");
     } else {
       setCart([...cart, { ...product, qty: 1 }]);
-      alert("product is added to cart");
+      // alert("product is added to cart");
+      toast.success("addcart successfully");
     }
   };
   return (
@@ -54,6 +61,7 @@ const App = () => {
           isAuth={isAuth}
         />
       </BrowserRouter>
+      <ToastContainer />
     </>
   );
 };

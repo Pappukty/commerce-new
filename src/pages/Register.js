@@ -45,6 +45,11 @@ const Signup = () => {
       });
   };
 
+  const resetHandel = () => {
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <div className="back-res">
       <div className="res">
@@ -54,7 +59,7 @@ const Signup = () => {
           </div>
 
           <div className="inputRegister">
-            <div>
+            {/* <div>
               <label htmlFor="userName"></label>
               <input
                 type="text"
@@ -64,7 +69,7 @@ const Signup = () => {
                 onChange={(e) => setUserName(e.target.value)}
                 required
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor="email address"></label>
               <input
@@ -87,7 +92,7 @@ const Signup = () => {
                 required
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="number"></label>
               <input
                 type="number"
@@ -97,10 +102,10 @@ const Signup = () => {
                 onChange={(e) => setNumber(e.target.value)}
                 required
               />
-            </div>
+            </div> */}
             {/* <input type="number" placeholder="Mobile Number" /> */}
           </div>
-          <div className="select-op">
+          {/* <div className="select-op">
             <div className="select">
               <label htmlFor="choose">choose Gender</label>
               <select
@@ -119,8 +124,8 @@ const Signup = () => {
                 <option value="others">others</option>
               </select>
             </div>
-          </div>
-          <div className="image-box">
+          </div> */}
+          {/* <div className="image-box">
             <label htmlFor="image">choose the image</label>
             <input
               type="file"
@@ -131,13 +136,15 @@ const Signup = () => {
               onChange={(e) => setImage(e.target.value)}
               required
             />
-          </div>
+          </div> */}
           {/* <b className="error">{errorMsg}</b> */}
           <div className="btn">
-            <button className="submit-btn" type="submit" onClick={onSubmit}>
+            <button className="submit-btn-btn" type="submit" onClick={onSubmit}>
               Submit
             </button>
-            <button className="reset-btn">Reset</button>
+            <button className="reset-btn" onClick={resetHandel}>
+              Reset
+            </button>
           </div>
           <p className="error">{error}</p>
           <div className="log-link">

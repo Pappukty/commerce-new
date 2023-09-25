@@ -21,7 +21,7 @@
   flex-direction: column;
 }
 .register {
-  width: 50%;
+  width: 40%;
 
   height: 98%;
   margin: 2rem auto;
@@ -42,6 +42,7 @@
   width: 90%;
   margin: 0.5rem auto;
   text-align: center;
+  margin-bottom: 5rem;
 }
 .register-hd {
   width: 98%;
@@ -55,6 +56,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  
   align-items: center;
   justify-content: center;
   background-color: transparent;
@@ -76,7 +78,7 @@
 
   flex-direction: column;
 }
-.select-op {
+/* .select-op {
   width: 99%;
   margin: 1rem auto;
   display: flex;
@@ -115,13 +117,29 @@
   font-size: 13px;
   font-weight: 400;
   color: white;
-}
+} */
 
 .btn {
   width: 50%;
   margin: 1rem auto;
   display: flex;
   gap: 2rem;
+}
+.submit-btn-btn {
+  width: 50%;
+  margin: 1rem auto;
+  padding: 5px 12px;
+  font-size: 19px;
+  font-weight: 600;
+  color: white;
+  border-radius: 6px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(33, 130, 25, 0.9528186274509804) 71%,
+    rgba(0, 1, 255, 1) 100%
+  );
 }
 .reset-btn {
   width: 50%;
@@ -145,6 +163,12 @@
   font-size: 18px;
   font-weight: 800px;
 }
+.submit-btn-btn:hover {
+  color: crimson;
+  border: 2px solid springgreen;
+  font-size: 18px;
+  font-weight: 800px;
+}
 .log-link {
   color: azure;
 }
@@ -156,12 +180,12 @@
 @media (max-width: 768px) {
   .register {
     width: 80%;
-    height: 98%;
-    margin: 0 auto;
+    height: 94%;
+    margin: 1rem auto;
   }
   .hed {
     width: 90%;
-    margin: 0.5rem auto;
+
     text-align: center;
   }
   .register-hd {
@@ -173,8 +197,13 @@
   }
   .inputRegister input {
     width: 97%;
-    margin: 0.3rem auto;
+    margin: 2rem auto;
   }
+  /* .submit-btn-btn {
+    padding: 5px 7px;
+    font-size: 13px;
+    font-weight: 400;
+  } */
   .select {
     width: 60%;
     text-align: center;
@@ -192,16 +221,21 @@
     margin: 0 auto;
   }
   .btn {
-    width: 97%;
+    width: 80%;
+
     margin: 0 auto;
   }
-  .log-link {
+  .log-li {
     color: azure;
-    font-size: 10px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
   }
   .error {
+    margin-top: 5rem;
+    margin: 1rem auto;
+    text-align: center;
     color: red;
-    font-size: 8px;
+    font-size: 19px;
+    font-weight: 500;
   }
 }

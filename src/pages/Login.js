@@ -19,18 +19,19 @@ function Login({ setIsAuth }) {
   const { setUserLogin } = useAuthContext();
   // const [{ isLogin }, dispatch] = useStateValue();
   //google login method
-  const signInWithGoogle = () => {
-    // signInWithPopup(auth, provider).then((result) => {
-    //   localStorage.setItem("isAuth", true);
-    //   setIsAuth(true);
-    signInWithPopup(auth, provider).then((data) => {
-      setIsAuth(data.user.email);
-      setUserLogin(true);
-      localStorage.setItem("email", data.user.email);
-      navigate("/");
-    });
+  const signInWithGoogle = async (e) => {
+    e.preventDefault();
+    await signInWithPopup(auth, provider)
+      .then((data) => {
+        setIsAuth(data.user.email);
+        setUserLogin(true);
+        localStorage.setItem("email", data.user.email);
+        navigate("/");
+      })
 
-    // });
+      .catch((err) => {
+        setError(err.message);
+      });
   };
   useEffect(() => {
     setValue(localStorage.getItem("email"));
@@ -53,7 +54,7 @@ function Login({ setIsAuth }) {
         localStorage.setItem("userLogin", JSON.stringify(true));
       })
       .catch((err) => {
-        console.log("Ar error occured", err.message);
+        setError(err.message);
       });
   };
   const showTestLogin = () => {
@@ -79,14 +80,13 @@ function Login({ setIsAuth }) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="submit-btn-btn">
+          <div className="submit-btn-btn-1">
             <button className="submit-btn" onClick={onLogin}>
               submit
             </button>
           </div>
         </div>
         <div className="login-with-google">
-          <p className="google-p"></p>
           <button className="login-with-google-btn" onClick={signInWithGoogle}>
             <img
               src="./img/google.png"
@@ -98,26 +98,20 @@ function Login({ setIsAuth }) {
           </button>
         </div>
         <div className="login-test-credential-btn">
-          <button
-            type="button"
-            className="login-credential-btn"
-            onClick={showTestLogin}
-          >
-            Test Credentials
-          </button>
-          {isShowLogin && (
-            <div>
+          <div>
+            <h5 className="login-credential-btn">
+              TestCredential
               <p>Email: test@gmail.com</p>
               <p>Password: test@123</p>
-            </div>
-          )}
+            </h5>
+          </div>
         </div>
+        <p className="error-1">{error}</p>
         <div className="res-link">
           <span>create a Register</span>
           <Link to="/register" className="signupclick">
             click here to register
           </Link>
-          <p className="error">{error}</p>
         </div>
       </form>
     </div>

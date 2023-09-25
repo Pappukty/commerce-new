@@ -1,6 +1,6 @@
 import React from "react";
 import { UserConsumer } from "../contexts/userContext";
-
+import "./style/UserProfile.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -25,7 +25,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     userProfile();
-    console.log("abig");
+    // console.log('abig');
   }, [profileData]);
 
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const UserProfile = () => {
   const signOutGoogle = () => {
     signOut(auth);
     setUserLoginData(null);
-    navigate("/");
+    navigate("/login");
   };
 
   const doneBtn = () => {
@@ -50,17 +50,19 @@ const UserProfile = () => {
           <from className="profile-data-us">
             <h1>Your Profile</h1>
             <div className="profile-row-readonly-us">
-              {/* <div className="profile-id">
-            <label htmlFor="id">ID</label>
-            <input
-              type="text"
-              value={id}
-              name="id"
-              id="id"
-              placeholder="Auto Generate"
-              readOnly
-            />
-          </div> */}
+              <div className="profile-id">
+                <label htmlFor="id" className="id">
+                  ID
+                </label>
+                <input
+                  type="text"
+                  value={id}
+                  name="id"
+                  id="id"
+                  placeholder="Auto Generate"
+                  readOnly
+                />
+              </div>
               <div className="profile-name-us">
                 <label htmlFor="name" className="name">
                   User Name
@@ -71,7 +73,7 @@ const UserProfile = () => {
                   name="name"
                   id="name"
                   readOnly
-                  placeholder="nill"
+                  // placeholder="nill"
                 />
               </div>
             </div>
@@ -120,17 +122,19 @@ const UserProfile = () => {
                   <option value="Kerala">Tuticorin</option>
                 </select>
               </div>
-              {/* <div className="profile-state">
-            <label htmlFor="state">State</label>
-            <input
-              type="text"
-              value={newState}
-              name="state"
-              id="state"
-              readOnly
-              placeholder="nill"
-            />
-          </div> */}
+              <div className="profile-state">
+                <label htmlFor="state" className="state-name">
+                  State
+                </label>
+                <input
+                  type="text"
+                  value={newState}
+                  name="state"
+                  id="state"
+                  readOnly
+                  placeholder="nill"
+                />
+              </div>
             </div>
             <div className="profile-row-readonly">
               {/* <div className="profile-address">
@@ -184,9 +188,9 @@ const UserProfile = () => {
                 </div>
               </div>
             </div>
-            <div className="profile-btnContainer-us">
+            <div className="profile-btnContainer">
               <Link to="/editProfile">
-                <button type="submit">
+                <button type="submit" className="btn-submit">
                   {!isEditing ? "Add Profile" : "Edit Profile"}
                 </button>
               </Link>

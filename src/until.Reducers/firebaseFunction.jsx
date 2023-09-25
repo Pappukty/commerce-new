@@ -1,16 +1,17 @@
 // import { collection, getDocs, setDoc, doc } from "firebase/firestore";
-import { collection, getDocs, setDoc, doc } from "firebase/firestore";
-import { db } from "../firestore/firebase-config";
+import { collection, getDocs, setDoc, doc } from 'firebase/firestore';
+import { db } from '../firestore/firebase-config';
 
-const userCollectionRef = collection(db, "userInput");
-const profileCollectionRef = collection(db, "users");
+const userCollectionRef = collection(db, 'userInput');
+const profileCollectionRef = collection(db, 'profileData');
 
 const getUserInput = async () => {
   const data = await getDocs(userCollectionRef);
   return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 };
+
 const setProfileData = async (data) => {
-  const profileRef = doc(db, "profileData", `${Date.now()}`);
+  const profileRef = doc(db, 'profileData', `${Date.now()}`);
   await setDoc(profileRef, data, { merge: true });
 };
 
