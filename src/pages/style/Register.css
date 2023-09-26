@@ -56,7 +56,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  
+
   align-items: center;
   justify-content: center;
   background-color: transparent;
@@ -182,6 +182,9 @@
     width: 80%;
     height: 94%;
     margin: 1rem auto;
+  }
+  .register:hover {
+    border: 4px solid blueviolet;
   }
   .hed {
     width: 90%;

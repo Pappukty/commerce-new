@@ -3,6 +3,8 @@ import { AiOutlineInstagram } from "react-icons/ai";
 import { RiFacebookFill } from "react-icons/ri";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { BsYoutube } from "react-icons/bs";
+import { Link } from "react-router-dom";
+
 import "../pages/style/Footer.css";
 const Footer = () => {
   return (
@@ -20,16 +22,26 @@ const Footer = () => {
               </p>
               <div className="icon">
                 <li>
-                  <RiFacebookFill />
+                  <Link to="https://www.facebook.com/">
+                    {" "}
+                    <RiFacebookFill />
+                  </Link>
                 </li>
                 <li>
-                  <AiOutlineInstagram />
+                  <Link to="https://instagram.com/aju_pappu?igshid=OGQ5ZDc2ODk2ZA==">
+                    {" "}
+                    <AiOutlineInstagram />
+                  </Link>
                 </li>
                 <li>
-                  <AiOutlineTwitter />
+                  <Link to="https://twitter.com/login?lang=en">
+                    <AiOutlineTwitter />
+                  </Link>
                 </li>
                 <li>
-                  <BsYoutube />
+                  <Link to="https://www.youtube.com/">
+                    <BsYoutube />
+                  </Link>
                 </li>
               </div>
             </div>

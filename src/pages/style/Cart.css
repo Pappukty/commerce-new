@@ -154,7 +154,7 @@
     /* padding: 20px 50px; */
     width: 100%;
     margin: 0 auto;
-    background: #d41212;
+    background: #f1f1f1;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -176,7 +176,7 @@
   }
   .cart-container .emptycart .emptycartbtn {
     margin-left: 30px;
-    /* width: 100%; */
+    width: 100%;
     margin: 0 auto;
     text-decoration: none;
     color: #fff;
@@ -186,11 +186,11 @@
   .cart-container .contant {
     width: 100%;
     margin: 0 auto;
-    /* padding: 20px 30px; */
+    padding: 20px 30px;
     align-items: center;
     justify-content: center;
     display: flex;
-    background-color: blueviolet;
+
     flex-direction: column;
     text-align: center;
   }
@@ -199,7 +199,7 @@
     height: auto;
     /* padding: 20px 40px; */
     display: flex;
-    background: #2fde04;
+    background: #fff;
     border-radius: 5px;
 
     justify-content: center;
@@ -248,14 +248,18 @@
     letter-spacing: 1px;
   }
   .cart-container .contant .cart_item .detail .info .qty {
-    width: 99%;
-    margin: 0 auto;
+    width: 90%;
+    margin: 0 0.3rem;
     margin-top: 10px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    position: relative;
+    right: 6px;
   }
   .cart-container .contant .cart_item .detail .info .qty .incqty {
-    padding: 10px 10px;
+    padding: 7px 9px;
     background: none;
     outline: none;
     border: none;
@@ -265,7 +269,7 @@
     cursor: pointer;
   }
   .cart-container .contant .cart_item .detail .info .qty .decqty {
-    padding: 10px 10px;
+    padding: 7px 9px;
     background: none;
     outline: none;
     border: none;
@@ -276,6 +280,7 @@
   .cart-container .contant .cart_item .detail .info .qty input {
     border: none;
     outline: none;
+
     background: none;
     text-align: center;
     font-size: 18px;
@@ -314,7 +319,7 @@
   }
   .cart-container .checkout {
     margin-top: 2-0px;
-
+    margin-right: 6rem;
     padding: 10px 16px;
     color: #fff;
     border: none;
