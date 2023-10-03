@@ -5,6 +5,7 @@ const Productdetail = [
     Cat: "Tablet",
     Price: "723",
     Img: "./img/tp1.jpg",
+    quantity: 1,
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const Productdetail = [
     Cat: "Smart Watch",
     Price: "168",
     Img: "./img/tp2.jpg",
+    quantity: 1,
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const Productdetail = [
     Cat: "Headphone",
     Price: "49",
     Img: "./img/tp3.jpg",
+    quantity: 1,
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const Productdetail = [
     Cat: "Camera",
     Price: "1049",
     Img: "./img/tp4.jpg",
+    quantity: 1,
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ const Productdetail = [
     Cat: "Powerbank",
     Price: "49",
     Img: "./img/tp5.jpg",
+    quantity: 1,
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ const Productdetail = [
     Cat: "Electronics",
     Price: "156",
     Img: "./img/tp6.png",
+    quantity: 1,
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ const Productdetail = [
     Cat: "Gaming",
     Price: "2098",
     Img: "./img/tp7.jpg",
+    quantity: 1,
   },
   {
     id: 8,
@@ -54,6 +61,8 @@ const Productdetail = [
     Cat: "Electronics",
     Price: "386",
     Img: "./img/tp8.jpg",
+    quantity: 1,
+    
   },
   {
     id: 9,
@@ -61,6 +70,7 @@ const Productdetail = [
     Cat: "Tablet",
     Price: "693",
     Img: "./img/p9.jpg",
+    quantity: 1,
   },
   {
     id: 10,
@@ -68,6 +78,7 @@ const Productdetail = [
     Cat: "Gaming",
     Price: "5036",
     Img: "./img/p10.jpg",
+    quantity: 1,
   },
   {
     id: 11,
@@ -75,6 +86,7 @@ const Productdetail = [
     Cat: "Electronics",
     Price: "198",
     Img: "./img/p11.jpg",
+    quantity: 1,
   },
   {
     id: 12,
@@ -82,6 +94,7 @@ const Productdetail = [
     Cat: "Electronics",
     Price: "793",
     Img: "./img/p12.jpg",
+    quantity: 1,
   },
 ];
 export { Productdetail };

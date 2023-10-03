@@ -1,19 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import Nav from "./nav";
+
 import Rout from "./Rout";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "./comb/Footer";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Productdetail } from "./Productdetail";
 
 import { BrowserRouter } from "react-router-dom";
+
 const App = () => {
   ///
-
+  const [search, setSearch] = useState();
   //
   const [isAuth, setIsAuth] = useState(false);
   //cart
@@ -29,21 +30,33 @@ const App = () => {
     setDetail([{ ...product }]);
     setClose(true);
   };
-  ///add to cart
 
+  ///add to cart
+  ///search  filter method
+  const searchbtn = (product) => {
+    const change = Productdetail.filter((x) => {
+      return x.Cat.toLocaleLowerCase() === product;
+    });
+    setProduct(change);
+  };
   //cart
   const addtocart = (product) => {
+    // setCart([...cart, {...product, quantity:1 }])
     const exsit = cart.find((x) => {
       return x.id === product.id;
     });
     if (exsit) {
       alert("This Product is allready added to cart ");
     } else {
-      setCart([...cart, { ...product, qty: 1 }]);
+      setCart([...cart, { ...product, quantity: 1 }]);
       // alert("product is added to cart");
       toast.success("addcart successfully");
     }
   };
+  // const updateQuantity = state.cart.reduce((prev, curr) => {
+  //   return prev + curr.quantity;
+  // }, 0);
+
   return (
     <>
       <BrowserRouter>
@@ -59,6 +72,8 @@ const App = () => {
           addtocart={addtocart}
           setIsAuth={setIsAuth}
           isAuth={isAuth}
+          count={cart.length}
+          searchbtn={searchbtn}
         />
       </BrowserRouter>
       <ToastContainer />

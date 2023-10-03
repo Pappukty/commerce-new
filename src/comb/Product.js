@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../pages/style/Product.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BsCart2 } from "react-icons/bs";
 import { BsEye } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Productdetail } from "../Productdetail";
+import { actionType } from "../until.Reducers/Reducer";
+import { useStateValue } from "../contexts/context";
+import { UseCartGlobalContext } from "../contexts/cartContext";
+import { useSearchValue } from "../contexts/SearchProvider";
 const Product = ({
   product,
   setProduct,
@@ -12,8 +18,49 @@ const Product = ({
   view,
   close,
   setClose,
-  addtocart,
+  searchbtn,
 }) => {
+  const [{ foodItems, cartItems, isLogin }, dispatch] = useStateValue();
+  const { search, setSearch } = useSearchValue();
+  const [items, setItems] = useState([]);
+  const [data, setData] = useState(foodItems);
+
+  const clickOrder = (item) => {
+    setItems([...cartItems, item]);
+
+    toast.success("Successfully Add To Cart", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  const addToCart = () => {
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: items,
+    });
+
+    localStorage.setItem("cartItems", JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    setData(
+      foodItems && foodItems.filter((item) => item.category !== "gallery")
+    );
+
+    localStorage.setItem("isLogin", JSON.stringify(isLogin));
+  }, [foodItems]);
+
+  useEffect(() => {
+    addToCart();
+  }, [items]);
+
   const filtterproduct = (product) => {
     const update = Productdetail.filter((X) => {
       return X.Cat === product;
@@ -40,13 +87,14 @@ const Product = ({
                   <div className="detail">
                     <h4>{curElm.Cat}</h4>
                     <h2>{curElm.Title}</h2>
+                    <p className="qty-1">{curElm.quantity}</p>
                     <p>
                       {" "}
                       A Screen Will Love: Whether your family is streaming or
                       video chatting with friends tablet AB...
                     </p>
                     <h3>{curElm.Price}</h3>
-                    <button onClick={() => addtocart(curElm)}>
+                    <button onClick={() => clickOrder(curElm)}>
                       Add To Cart
                     </button>
                   </div>
@@ -57,6 +105,16 @@ const Product = ({
         </div>
       ) : null}
       <div className="products">
+        <div className=" search_box">
+          <input
+            type="text"
+            value={search}
+            placeholder="Enter The Product Name"
+            autoComplete="off"
+            onChange={(e) => setSearch(e.target.value)}
+          ></input>
+          <button onClick={() => searchbtn(search)}>search</button>
+        </div>
         <h2># Products</h2>
         <p>Home. Products</p>
         <div className="container">
@@ -66,7 +124,9 @@ const Product = ({
               <ul>
                 <li onClick={() => AllProducts()}>All Products</li>
                 <li onClick={() => filtterproduct("Tablet")}>Tablet</li>
-                <li onClick={() => filtterproduct("Smart")}>Smart Watch</li>
+                <li onClick={() => filtterproduct("Smart Watch")}>
+                  Smart Watch
+                </li>
                 <li onClick={() => filtterproduct("Headphone")}>Headphone</li>
 
                 <li onClick={() => filtterproduct("Camera")}>Camera</li>
@@ -85,7 +145,7 @@ const Product = ({
                       <div className="img_box">
                         <img src={curElm.Img} alt={curElm.Title}></img>
                         <div className="icon">
-                          <li onClick={() => addtocart(curElm)}>
+                          <li onClick={() => clickOrder(curElm)}>
                             {" "}
                             <BsCart2 />
                           </li>
@@ -100,6 +160,7 @@ const Product = ({
                         <p>{curElm.Cat}</p>
                         <h3>{curElm.Title}</h3>
                         <h4>${curElm.Price}</h4>
+                        <p className="qty-1">{curElm.quantity}</p>
                       </div>
                     </div>
                   </>
@@ -109,6 +170,7 @@ const Product = ({
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

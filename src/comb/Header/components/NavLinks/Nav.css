@@ -1,11 +1,14 @@
 .nav-container {
   width: 100vw;
-  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 .nav {
   width: 100%;
-  align-items: center;
-  justify-content: center;
+
+  margin: 0 auto;
+  height: auto;
 }
 .free {
   padding: 10px 30px;
@@ -33,24 +36,7 @@
   display: flex;
   justify-content: space-between;
 }
-.main_header .container .search_box {
-  margin-right: 30px;
-}
-.main_header .container .search_box input {
-  outline: none;
-  padding: 10px 30px;
-  border: 3px solid #0989ff;
-  width: 300px;
-  color: #010f1c;
-}
-.main_header .container .search_box button {
-  border: 3px solid #0989ff;
-  outline: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  background: #0989ff;
-  color: #ecf2f7;
-}
+
 .main_header .container .icon {
   display: flex;
   margin-right: 50px;
@@ -72,6 +58,11 @@
   margin-right: 5px;
   margin-top: 2px;
 }
+.userpeofile {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(97, 174, 205);
+}
 .main_header .container .icon .second_icon {
   display: flex;
 }
@@ -80,6 +71,14 @@
   font-size: 29px;
   cursor: pointer;
   color: #0989ff;
+}
+.product-quantity {
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  bottom: 40px;
+  left: 30px;
+  text-decoration: none;
 }
 .header {
   width: 100%;
@@ -114,10 +113,13 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  position: relative;
 }
 .header .container .auth button {
-  width: 98%;
-
+  width: 50%;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
   font-size: 27px;
   cursor: pointer;
   outline: none;
@@ -198,6 +200,14 @@
     cursor: pointer;
     color: #0989ff;
   }
+  .product-quantity {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    bottom: 35px;
+    left: 26px;
+    text-decoration: none;
+  }
   .header .container {
     width: 99%;
     /* display: flex; */
@@ -238,18 +248,36 @@
     background: none;
   } */
   .header .container .auth {
-    width: 30%;
-    margin-left: 10rem;
-    align-items: center;
-    justify-content: center;
+    width: 97%;
+    /* margin-left: ; */
+    align-items: flex-end;
+    justify-content: flex-end;
     display: flex;
     font-size: 22px;
+    position: relative;
     cursor: pointer;
   }
-  .header .container .auth {
-    width: 80%;
+  .auth-container {
+    width: 95%;
+    margin: 0 auto;
+    justify-content: end;
+    align-items: end;
     display: flex;
-    margin-left: 10rem;
+  }
+  .header .container .auth button {
+    width: 99%;
+    margin: 0 0.2rem;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    /* 
+    position: relative;
+    left: 100px; */
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    font-size: 18px;
+    font-weight: 600;
     margin-top: 1rem;
   }
 }

@@ -4,9 +4,55 @@ product.css * {
   font-family: sans-serif;
   box-sizing: border-box;
 }
+.qty-1 {
+  display: none;
+}
 .products {
   padding: 30px 40px;
   width: 100%;
+}
+.products .search_box {
+  width: 98%;
+
+  margin-right: 0px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search_box input {
+  width: 25%;
+  margin: 0 0.2rem;
+  /* position: absolute;
+  bottom: 50px;
+  left: 260px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  margin-top: -8rem;
+  border-radius: 5px;
+  padding: 10px 30px;
+  border: 3px solid #0989ff;
+  /* width: 300px; */
+  color: #010f1c;
+}
+.search_box button {
+  width: 10%;
+  /* position: absolute;
+  bottom: 50px;
+  right: 490px; */
+  border: 3px solid #0989ff;
+  outline: none;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  padding: 9px 18px;
+  margin-top: -8rem;
+  cursor: pointer;
+  background: #0989ff;
+  border-radius: 5px;
+  color: #ecf2f7;
 }
 .products h2 {
   font-size: 42px;
@@ -21,13 +67,27 @@ product.css * {
 }
 .products .container {
   margin-top: 20px;
-  max-width: 100%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
 }
 .products .container .filter {
-  padding: 20px 30px;
+  width: 18%;
+  margin: 0 auto;
+  padding: 10px 10px;
 }
+
+.products .container .filter .categories {
+  width: 60%;
+  margin: 0 auto;
+  align-items: start;
+  flex-direction: column;
+  justify-content: start;
+  display: flex;
+  position: relative;
+
+  left: 0px;
+}
+
 .products .container .filter .categories h3 {
   color: #010f1c;
   font-size: 16px;
@@ -44,12 +104,18 @@ product.css * {
   cursor: pointer;
 }
 .products .container .productbox {
-  margin-right: 0%;
+  margin-right: 4rem;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
 }
 .products .container .productbox .contant {
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  margin: 0 0.5rem;
   flex-wrap: wrap;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 .products .container .productbox .contant .box {
   padding: 10px 20px;
@@ -61,7 +127,7 @@ product.css * {
   transition: 0.5s;
   cursor: pointer;
   border-radius: 5px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .products .container .productbox .contant .box:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -221,7 +287,66 @@ product.css * {
     transition: 0.5s;
     cursor: pointer;
     border-radius: 5px;
-    margin-right: 20px;
+    margin-right: 0px;
+  }
+  .qty-1 {
+    display: none;
+  }
+  .products .search_box {
+    width: 99%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
+  }
+  .search_box input {
+    width: 56%;
+
+    position: static;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    margin: 1rem;
+    padding: 8px 30px;
+    border: 3px solid #0989ff;
+    /* width: 180px; */
+    color: #010f1c;
+  }
+  .search_box button {
+    width: 10%;
+    font-size: 11px;
+    font-weight: 600;
+    border: 3px solid #0989ff;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 20px;
+    cursor: pointer;
+    margin: 1rem;
+    background: #0989ff;
+    color: #ecf2f7;
+  }
+  .products .container .filter {
+    width: 90%;
+    margin: 0 auto;
+
+    padding: 10px 10px;
+  }
+  .products .container .filter .categories {
+    width: 99%;
+    margin: 0 auto;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    display: flex;
+    position: relative;
+
+    left: 0px;
   }
   .products .container .productbox .contant .box:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -263,20 +388,20 @@ product.css * {
     color: #fff;
   }
   .product_detail {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     padding: 10px 20px;
     width: 97%;
     height: 80%;
-    position: absolute;
+    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     z-index: 2;
     /* margin-top: -20%; */
     background: rgba(0, 0, 0, 0.24);
   }
   .product_detail .container {
-    margin-top: 7%;
+    /* margin-top: 7%; */
 
     width: 97%;
     margin: 0.5rem auto;

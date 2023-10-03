@@ -124,6 +124,9 @@ home.css * {
 .about .container .box .detail p {
   color: #9a9a9a;
 }
+.qty-1 {
+  display: none;
+}
 .product {
   padding: 30px 40px;
   width: 100%;
@@ -270,15 +273,19 @@ home.css * {
   z-index: 2;
   margin-top: -20%;
   background: rgba(0, 0, 0, 0.24);
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 .product_detail .container {
   margin-top: 7%;
-  margin-left: 8%;
-  width: 500px;
+  /* margin-left: 5%; */
+  width: 50%;
   height: 550px;
   background: #fff;
   padding: 20px 30px;
   border-radius: 10px;
+  margin-right: 100px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .product_detail .container .closebtn {
@@ -479,6 +486,9 @@ home.css * {
   .about .container .box .detail p {
     color: #9a9a9a;
   }
+  .qty-1 {
+    display: none;
+  }
   .product .container {
     display: flex;
     justify-content: space-between;
@@ -536,13 +546,12 @@ home.css * {
     color: #fff;
   }
   .product_detail {
-    margin-top: 20rem;
+    /* margin-top: 20rem; */
     padding: 10px 20px;
     width: 99%;
     height: 120%;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+
     display: flex;
     flex-direction: column;
     z-index: 2;
@@ -550,7 +559,7 @@ home.css * {
     background: rgba(0, 0, 0, 0.24);
   }
   .product_detail .container {
-    margin-top: 7%;
+    /* margin-top: 7%; */
     /* margin-left: 8%; */
     width: 99%;
     margin: 0.5rem auto;

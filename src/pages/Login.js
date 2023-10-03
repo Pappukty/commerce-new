@@ -108,9 +108,9 @@ function Login({ setIsAuth }) {
         </div>
         <p className="error-1">{error}</p>
         <div className="res-link">
-          <span>create a Register</span>
+          <span>Create a new account</span>
           <Link to="/register" className="signupclick">
-            click here to register
+            click here to create account
           </Link>
         </div>
       </form>

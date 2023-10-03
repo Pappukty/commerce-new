@@ -4,121 +4,209 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../pages/style/Cart.css";
+
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { CartConsumer } from "../contexts/cartContext";
-const Cart = ({ cart, setCart }) => {
-  console.log(cart);
-  const { checkOut } = CartConsumer();
+import { useStateValue } from "../contexts/context";
+// import { actionType } from "../../context/reducer";
+import { actionType } from "../until.Reducers/Reducer";
+const Cart = () => {
+  const [{ cartShow, cartItems, subTotal }, dispatch] = useStateValue();
   const navigate = useNavigate();
-  // increace qty
-  const incqty = (product) => {
-    const exsit = cart.find((x) => {
-      return x.id === product.id;
+  console.log(cartItems);
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      cartShow: !cartShow,
     });
-    setCart(
-      cart.map((curElm) => {
-        return curElm.id === product.id
-          ? { ...exsit, qty: exsit.qty + 1 }
-          : curElm;
-      })
-    );
   };
 
-  // Dec Qty
-  const decqty = (product) => {
-    const exsit = cart.find((x) => {
-      return x.id === product.id;
+  const clearCart = () => {
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: [],
     });
-    setCart(
-      cart.map((curElm) => {
-        return curElm.id === product.id
-          ? { ...exsit, qty: exsit.qty - 1 }
-          : curElm;
-      })
-    );
+    toast.success("Successfully Clear Cart");
   };
-  //Remove cart product
-  const removeproduct = (product) => {
-    const exsit = cart.find((x) => {
-      return x.id === product.id;
+
+  const checkOut = () => {
+    dispatch({
+      type: actionType.SET_CHECKOUT,
+      cartItems: [],
+      cartShow: !cartShow,
     });
-    if (exsit.qty > 0) {
-      setCart(
-        cart.filter((x) => {
-          return x.id !== product.id;
-        })
-      );
-    }
-    toast.success("delete successfully");
+
+    toast.success("order has been placed");
   };
+
+  const increaseItem = (id) => {
+    dispatch({
+      type: actionType.SET_INCREASE_ITEM,
+      payload: { id: id },
+    });
+  };
+
+  const decreaseItem = (id) => {
+    dispatch({
+      type: actionType.SET_DECREASE_ITEM,
+      payload: { id: id },
+    });
+    toast.success("Successfully removed from Cart");
+  };
+
+  useEffect(() => {
+    dispatch({
+      type: actionType.SET_UPDATE_TOTAL,
+    });
+  }, [cartItems]);
   // Total price
-  const Totalprice = cart.reduce(
-    (price, item) => price + item.qty * item.Price,
+  const Totalprice = cartItems.reduce(
+    (price, item) => price + item.quantity * item.Price,
     0
   );
   const OrderNow = () => {
-    setCart([]);
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: [],
+    });
     navigate("/");
     toast.success("Your order as been placed");
   };
-
   return (
-    <div className="cart-page">
-      <div className="cart-container">
-        {cart.length === 0 && (
-          <div className="emptycart">
-            <h2 className="empty">Cart is Empty</h2>
-            <Link to="/product" className="emptycartbtn">
-              Shop Now
-            </Link>
+    <div>
+      {/* <div className="cart-page">
+        {cartItems && cartItems.length > 0 ? (
+          <div className="cart">
+            <div className="contant">
+              {cartItems &&
+                cartItems.map((item) => (
+                  <div className="cart_item" key={item.id}>
+                    <div className="img_box">
+                      <img src={item.Img} alt={item.Title}></img>
+                    </div>
+                    <div className="detail">
+                      <div className="info">
+                        <h4>{item.Cat}</h4>
+                        <h3>{item.Title}</h3>
+                        <p>Price: ${item.Price}</p>
+                        <div className="qty">
+                          <button
+                            className="incqty"
+                            onClick={() => increaseItem(item.id)}
+                          >
+                            +
+                          </button>
+                          <input type="text" value={item.quantity}></input>
+                          <p className="order-count">{item.quantity}</p>
+                          <button
+                            className="decqty"
+                            onClick={() => decreaseItem(item.id)}
+                          >
+                            -
+                          </button>
+                        </div>
+
+                        
+                        <h4 className="subtotal">
+                          sub total: ${item.Price * item.quantity}
+                        </h4>
+                      </div>
+                      <div className="close">
+                        <button onClick={() => decreaseItem(item.id)}>
+                          <AiOutlineClose />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              <div className="total-amount-container">
+                <h4>
+                  Total
+                 
+                  <p>${5 + subTotal}</p>
+                  <h2 className="totalprice">total: $ {Totalprice}</h2>
+                </h4>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="cart-container">
+            {cartItems.length === 0 && (
+              <div className="emptycart">
+                <h2 className="empty">Cart is Empty</h2>
+                <Link to="/product" className="emptycartbtn">
+                  Shop Now
+                </Link>
+              </div>
+            )}
           </div>
         )}
-        <div className="contant">
-          {cart.map((curElm) => {
-            return (
-              <div className="cart_item" key={curElm.id}>
-                <div className="img_box">
-                  <img src={curElm.Img} alt={curElm.Title}></img>
-                </div>
-                <div className="detail">
-                  <div className="info">
-                    <h4>{curElm.Cat}</h4>
-                    <h3>{curElm.Title}</h3>
-                    <p>Price: ${curElm.Price}</p>
-                    <div className="qty">
-                      <button className="incqty" onClick={() => incqty(curElm)}>
-                        +
-                      </button>
-                      <input type="text" value={curElm.qty}></input>
-                      <button className="decqty" onClick={() => decqty(curElm)}>
-                        -
+
+        <ToastContainer />
+      </div> */}
+
+      <div className="cart-page">
+        <div className="cart-container">
+          {cartItems.length === 0 && (
+            <div className="emptycart">
+              <h2 className="empty">Cart is Empty</h2>
+              <Link to="/product" className="emptycartbtn">
+                Shop Now
+              </Link>
+            </div>
+          )}
+          <div className="contant">
+            {cartItems.map((curElm) => {
+              return (
+                <div className="cart_item" key={curElm.id}>
+                  <div className="img_box">
+                    <img src={curElm.Img} alt={curElm.Title}></img>
+                  </div>
+                  <div className="detail">
+                    <div className="info">
+                      <h4>{curElm.Cat}</h4>
+                      <h3>{curElm.Title}</h3>
+                      <p>Price: ${curElm.Price}</p>
+                      <div className="qty">
+                        <button
+                          className="incqty"
+                          onClick={() => increaseItem(curElm.id)}
+                        >
+                          +
+                        </button>
+                        <input type="text" value={curElm.quantity}></input>
+                        <button
+                          className="decqty"
+                          onClick={() => decreaseItem(curElm.id)}
+                        >
+                          -
+                        </button>
+                      </div>
+                      <h4 className="subtotal">
+                        sub total: ${curElm.Price * curElm.quantity}
+                      </h4>
+                    </div>
+                    <div className="close">
+                      <button onClick={() => decreaseItem(curElm.id)}>
+                        <AiOutlineClose />
                       </button>
                     </div>
-                    <h4 className="subtotal">
-                      sub total: ${curElm.Price * curElm.qty}
-                    </h4>
-                  </div>
-                  <div className="close">
-                    <button onClick={() => removeproduct(curElm)}>
-                      <AiOutlineClose />
-                    </button>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+          {cartItems.length > 0 && (
+            <div className="totals">
+              <h2 className="totalprice">total: $ {Totalprice}</h2>
+              <button className="checkout" onClick={OrderNow}>
+                Checkout
+              </button>
+            </div>
+          )}
         </div>
-        {cart.length > 0 && (
-          <>
-            <h2 className="totalprice">total: $ {Totalprice}</h2>
-            <button className="checkout" onClick={OrderNow}>
-              Checkout
-            </button>
-          </>
-        )}
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </div>
   );
 };

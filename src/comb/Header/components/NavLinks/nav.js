@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./Nav.css";
-import heart from "./image/images/heart.png";
+import "../NavLinks/Nav.css";
+import heart from "../../../../image/images/heart.png";
 import { Link, Outlet } from "react-router-dom";
 import { FaTruckMoving } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -8,14 +8,18 @@ import { BsBagCheck } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import { BiLogIn } from "react-icons/bi";
 import { BiLogOut } from "react-icons/bi";
-import { auth } from "./firestore/firebase-config";
-import { useAuthContext } from "./contexts/Authcontext";
+import { auth } from "../../../../firestore/firebase-config";
+import { useAuthContext } from "../../../../contexts/Authcontext";
+import { UseCartGlobalContext } from "../../../../contexts/cartContext";
+import { actionType } from "../../../../until.Reducers/Reducer";
+import { useStateValue } from "../../../../contexts/context";
+import { useSearchValue } from "../../../../contexts/SearchProvider";
 //(props)
-function Nav({ searchbtn }) {
-  const [search, setSearch] = useState();
+function Nav() {
   const [heartIcon, setHeartIcon] = useState(false);
   const { userName, setUserName, setUserLogin } = useAuthContext();
 
+  const [{ user, cartItems, cartShow }, dispatch] = useStateValue();
   const [name, setName] = useState("");
 
   const handelLogout = () => {
@@ -25,6 +29,13 @@ function Nav({ searchbtn }) {
   const heart = (e) => {
     e.preventDefault();
     setHeartIcon("liked");
+  };
+
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      cartShow: !cartShow,
+    });
   };
   return (
     <div className="nav-container">
@@ -45,16 +56,7 @@ function Nav({ searchbtn }) {
                 width="100px"
               ></img>
             </div>
-            <div className=" search_box">
-              <input
-                type="text"
-                value={search}
-                placeholder="Enter The Product Name"
-                autoComplete="off"
-                onChange={(e) => setSearch(e.target.value)}
-              ></input>
-              <button onClick={() => searchbtn(search)}>search</button>
-            </div>
+
             <div className="icon">
               <div className="account">
                 <div className="user_icon">
@@ -63,6 +65,7 @@ function Nav({ searchbtn }) {
                   </Link>
                 </div>
                 {/* <p>{userName.name ? `${setUserName.name}` : "profile"}</p> */}
+                <p className="userpeofile">profile</p>
               </div>
               <div className="second_icon">
                 <Link to="/home" className="link">
@@ -78,8 +81,13 @@ function Nav({ searchbtn }) {
                 <Link to="/cart" className="link">
                   {" "}
                   <BsBagCheck />
+                  {cartItems && cartItems.length > 0 && (
+                    <p className="product-quantity">{cartItems.length}</p>
+                  )}
                 </Link>
-
+                <div className="amount-container">
+                  <p className="total-amount">{}</p>
+                </div>
                 <p> </p>
               </div>
             </div>
@@ -99,11 +107,11 @@ function Nav({ searchbtn }) {
                     Product
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/about" className="link">
                     about
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/contact" className="link">
                     contact
@@ -113,16 +121,16 @@ function Nav({ searchbtn }) {
             </div>
 
             <div className="auth">
-              <button> </button>
-
-              <button onClick={handelLogout}>
-                {" "}
-                <BiLogOut />
-              </button>
+              <div className="auth-container">
+                <button onClick={handelLogout}>
+                  {" "}
+                  <BiLogOut />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <Outlet />
+        {/* <Outlet /> */}
       </div>
     </div>
   );

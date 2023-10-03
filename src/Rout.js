@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./comb/Home";
 import Product from "./comb/Product";
-import Cart from "./comb/Cart";
-import Footer from "./comb/Footer";
+
+import Footer from "./comb/Header/components/footer/Footer";
 import { Productdetail } from "./Productdetail";
 import HomeProduct from "./HomeProduct";
 import Login from "./pages/Login";
@@ -11,10 +11,11 @@ import Register from "./pages/Register";
 import Cantact from "./comb/Contact";
 import UserProfile from "./pages/UserProfile";
 import EditProfile from "./pages/EditProfile";
-import Nav from "./nav";
+import Header from "./comb/Header/Header";
 import { auth } from "./firestore/firebase-config";
 import { useState, useEffect } from "react";
 import { AuthContext, useAuthContext } from "./contexts/Authcontext";
+import Cart from "./comb/Cart";
 const Rout = ({
   product,
   setProduct,
@@ -26,6 +27,7 @@ const Rout = ({
   setCart,
   addtocart,
   setIsAuth,
+  searchbtn,
   IsAuth,
 }) => {
   // const { isLogin, setIsLogin } = useStateValue();
@@ -34,14 +36,6 @@ const Rout = ({
 
   //login condition
 
-  ///search  filter method
-  const searchbtn = (product) => {
-    const change = (Productdetail, HomeProduct).filter((x) => {
-      return x.Cat === product;
-    });
-    setProduct(change);
-  };
-
   return (
     <>
       <Routes>
@@ -49,7 +43,7 @@ const Rout = ({
           path="/"
           element={
             userLogin ? (
-              <Nav searchbtn={searchbtn} IsAuth={IsAuth} />
+              <Header IsAuth={IsAuth} />
             ) : (
               <Login setIsAuth={setIsAuth} />
             )
@@ -67,6 +61,7 @@ const Rout = ({
                 setClose={setClose}
                 addtocart={addtocart}
                 IsAuth={IsAuth}
+                searchbtn={searchbtn}
               />
             }
           />
@@ -81,17 +76,14 @@ const Rout = ({
                 close={close}
                 setClose={setClose}
                 addtocart={addtocart}
+                searchbtn={searchbtn}
               />
             }
           />
-          <Route
-            path="/cart"
-            element={<Cart cart={cart} setCart={setCart} />}
-          />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/contact" element={<Cantact />} />
-          <Route path="/about" element={<Footer />} />
         </Route>
         <Route path="/register" element={<Register />} />
 

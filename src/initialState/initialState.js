@@ -13,4 +13,10 @@ export const initialState = {
   user: userInfo,
   isLogin: loginInfo,
   Logout: logoutInfo,
+  foodItems: null,
+  cartShow: false,
+  cartItems: null,
+  subTotal: 0,
+
+  userDetails: null,
 };

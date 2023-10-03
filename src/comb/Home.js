@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../pages/style/Home.css";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
@@ -12,9 +12,54 @@ import { FaHeadphones } from "react-icons/fa";
 import { BsCart2 } from "react-icons/bs";
 import { BsEye } from "react-icons/bs";
 import { AiOutlineHeart, AiOutlineCloseCircle } from "react-icons/ai";
+import { useSearchValue } from "../contexts/SearchProvider";
+import { useStateValue } from "../contexts/context";
+import { actionType } from "../until.Reducers/Reducer";
 import HomeProduct from "../HomeProduct";
-const Home = ({ detail, view, close, setClose, addtocart }) => {
+const Home = ({ detail, view, close, setClose }) => {
   const [homeProduct, setHomeProduct] = useState(HomeProduct);
+  const { allProduct } = useSearchValue();
+  const [{ foodItems, cartItems, isLogin }, dispatch] = useStateValue();
+
+  const [items, setItems] = useState([]);
+  const [data, setData] = useState(foodItems);
+
+  const clickOrder = (item) => {
+    setItems([...cartItems, item]);
+
+    toast.success("Successfully Add To Cart", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  const addToCart = () => {
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: items,
+    });
+
+    localStorage.setItem("cartItems", JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    setData(
+      foodItems && foodItems.filter((item) => item.category !== "gallery")
+    );
+
+    localStorage.setItem("isLogin", JSON.stringify(isLogin));
+  }, [foodItems]);
+
+  useEffect(() => {
+    addToCart();
+  }, [items]);
+
   return (
     <>
       {close ? (
@@ -38,7 +83,8 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
                       video chatting with friends tablet AB...
                     </p>
                     <h3>{curElm.Price}</h3>
-                    <button onClick={() => addtocart(curElm)}>
+                    <p className="qty-1">{curElm.quantity}</p>
+                    <button onClick={() => clickOrder(curElm)}>
                       Add To Cart
                     </button>
                   </div>
@@ -151,8 +197,9 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
               <div className="box" key={curElm.id}>
                 <div className="img_box">
                   <img src={curElm.Img} alt={curElm.Title}></img>
+
                   <div className="icon">
-                    <li onClick={() => addtocart(curElm)}>
+                    <li onClick={() => clickOrder(curElm)}>
                       {" "}
                       <BsCart2 />
                     </li>
@@ -167,6 +214,7 @@ const Home = ({ detail, view, close, setClose, addtocart }) => {
                   <p>{curElm.Cat}</p>
                   <h3>{curElm.Title}</h3>
                   <h4>{curElm.Price}</h4>
+                  <p className="qty-1">{curElm.quantity}</p>
                 </div>
               </div>
             );
