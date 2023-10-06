@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import Rout from "./Rout";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import HomeProduct from "./HomeProduct";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Productdetail } from "./Productdetail";
 
 import { BrowserRouter } from "react-router-dom";
-
+import { useSearchValue } from "./contexts/SearchProvider";
 const App = () => {
   ///
-  const [search, setSearch] = useState();
+
   //
   const [isAuth, setIsAuth] = useState(false);
   //cart
@@ -24,6 +24,10 @@ const App = () => {
   const [close, setClose] = useState(false);
   //filter product
   const [product, setProduct] = useState(Productdetail);
+
+  const { search, setSearch } = useSearchValue("");
+  //
+  const [homeProduct, setHomeProduct] = useState(HomeProduct);
 
   //product detail
   const view = (product) => {
@@ -39,6 +43,17 @@ const App = () => {
     });
     setProduct(change);
   };
+
+  ///homepage search
+  // const setSearch = (homeProduct) => {
+  // const filterItem = HomeProduct.filter((x) => {
+  // return x.Cat.toLocaleLowerCase() === homeProduct;
+  // });
+  // setHomeProduct(filterItem);
+  // };
+  // useEffect(() => {
+  //   searchbtn1("");
+  // });
   //cart
   const addtocart = (product) => {
     // setCart([...cart, {...product, quantity:1 }])
@@ -74,6 +89,8 @@ const App = () => {
           isAuth={isAuth}
           count={cart.length}
           searchbtn={searchbtn}
+          homeProduct={homeProduct}
+          setHomeProduct={setHomeProduct}
         />
       </BrowserRouter>
       <ToastContainer />

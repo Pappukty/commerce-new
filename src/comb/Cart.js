@@ -43,7 +43,9 @@ const Cart = () => {
     dispatch({
       type: actionType.SET_INCREASE_ITEM,
       payload: { id: id },
+      cartItems: [],
     });
+    toast.success("AddCartSuccessfully ");
   };
 
   const decreaseItem = (id) => {

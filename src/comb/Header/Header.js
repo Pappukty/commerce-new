@@ -3,11 +3,11 @@ import Nav from "./components/NavLinks/nav";
 
 import { Outlet } from "react-router-dom";
 import Footer from "./components/footer/Footer";
-const Header = () => {
+const Header = (searchbtn1) => {
   return (
     <div>
-      <Nav />
-      <Outlet/>
+      <Nav  searchbtn1={searchbtn1} />
+      <Outlet />
       <Footer />
     </div>
   );

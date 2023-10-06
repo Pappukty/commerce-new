@@ -18,7 +18,7 @@ import { useSearchValue } from "../../../../contexts/SearchProvider";
 function Nav() {
   const [heartIcon, setHeartIcon] = useState(false);
   const { userName, setUserName, setUserLogin } = useAuthContext();
-
+  const { search, setSearch } = useSearchValue("");
   const [{ user, cartItems, cartShow }, dispatch] = useStateValue();
   const [name, setName] = useState("");
 
@@ -37,6 +37,7 @@ function Nav() {
       cartShow: !cartShow,
     });
   };
+
   return (
     <div className="nav-container">
       <div className="nav">
@@ -48,15 +49,16 @@ function Nav() {
         </div>
         <div className="main_header">
           <div className="container">
-            <div className="logo">
-              <img
-                src="./img/LOGO.png"
-                alt="logo"
-                className="logo-img"
-                width="100px"
-              ></img>
-            </div>
-
+            <Link to="/">
+              <div className="logo">
+                <img
+                  src="./img/LOGO.png"
+                  alt="logo"
+                  className="logo-img"
+                  width="100px"
+                ></img>
+              </div>
+            </Link>
             <div className="icon">
               <div className="account">
                 <div className="user_icon">

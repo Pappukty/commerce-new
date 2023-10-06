@@ -21,7 +21,7 @@ const Product = ({
   searchbtn,
 }) => {
   const [{ foodItems, cartItems, isLogin }, dispatch] = useStateValue();
-  const { search, setSearch } = useSearchValue();
+  const { search, setSearch } = useSearchValue("");
   const [items, setItems] = useState([]);
   const [data, setData] = useState(foodItems);
 
@@ -113,7 +113,7 @@ const Product = ({
             autoComplete="off"
             onChange={(e) => setSearch(e.target.value)}
           ></input>
-          <button onClick={() => searchbtn(search)}>search</button>
+          {/* <button onClick={() => searchbtn(search)}>search</button> */}
         </div>
         <h2># Products</h2>
         <p>Home. Products</p>
@@ -138,34 +138,40 @@ const Product = ({
           </div>
           <div className="productbox">
             <div className="contant">
-              {product.map((curElm) => {
-                return (
-                  <>
-                    <div className="box" key={curElm.id}>
-                      <div className="img_box">
-                        <img src={curElm.Img} alt={curElm.Title}></img>
-                        <div className="icon">
-                          <li onClick={() => clickOrder(curElm)}>
-                            {" "}
-                            <BsCart2 />
-                          </li>
-                          <li onClick={() => view(curElm)}>
-                            {" "}
-                            <BsEye />
-                          </li>
-                          <li> </li>
+              {product
+                .filter((curElm) => {
+                  return search.toLowerCase() === ""
+                    ? curElm
+                    : curElm.Cat.toLowerCase().includes(search);
+                })
+                .map((curElm) => {
+                  return (
+                    <>
+                      <div className="box" key={curElm.id}>
+                        <div className="img_box">
+                          <img src={curElm.Img} alt={curElm.Title}></img>
+                          <div className="icon">
+                            <li onClick={() => clickOrder(curElm)}>
+                              {" "}
+                              <BsCart2 />
+                            </li>
+                            <li onClick={() => view(curElm)}>
+                              {" "}
+                              <BsEye />
+                            </li>
+                            <li> </li>
+                          </div>
+                        </div>
+                        <div className="detail">
+                          <p>{curElm.Cat}</p>
+                          <h3>{curElm.Title}</h3>
+                          <h4>${curElm.Price}</h4>
+                          <p className="qty-1">{curElm.quantity}</p>
                         </div>
                       </div>
-                      <div className="detail">
-                        <p>{curElm.Cat}</p>
-                        <h3>{curElm.Title}</h3>
-                        <h4>${curElm.Price}</h4>
-                        <p className="qty-1">{curElm.quantity}</p>
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
+                    </>
+                  );
+                })}
             </div>
           </div>
         </div>

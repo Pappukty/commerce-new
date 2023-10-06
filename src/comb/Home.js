@@ -16,14 +16,15 @@ import { useSearchValue } from "../contexts/SearchProvider";
 import { useStateValue } from "../contexts/context";
 import { actionType } from "../until.Reducers/Reducer";
 import HomeProduct from "../HomeProduct";
-const Home = ({ detail, view, close, setClose }) => {
-  const [homeProduct, setHomeProduct] = useState(HomeProduct);
+const Home = ({ detail, view, close, setClose, homeProduct, searchbtn1 }) => {
+  // const [homeProduct, setHomeProduct] = useState(HomeProduct);
   const { allProduct } = useSearchValue();
   const [{ foodItems, cartItems, isLogin }, dispatch] = useStateValue();
 
   const [items, setItems] = useState([]);
   const [data, setData] = useState(foodItems);
-
+  const { search, setSearch } = useSearchValue("");
+  console.log(search);
   const clickOrder = (item) => {
     setItems([...cartItems, item]);
 
@@ -94,6 +95,16 @@ const Home = ({ detail, view, close, setClose }) => {
           </div>
         </div>
       ) : null}
+      <div className=" search_box-1">
+        <input
+          type="text"
+          value={search}
+          placeholder="Enter The Product Name"
+          autoComplete="off"
+          onChange={(e) => setSearch(e.target.value)}
+        ></input>
+        {/* <button onClick={() => searchbtn1(search)}>search</button> */}
+      </div>
       <div className="top_banner">
         <div className="container">
           <div className="detail">
@@ -192,33 +203,39 @@ const Home = ({ detail, view, close, setClose }) => {
       <div className="product">
         <h2>Top Products</h2>
         <div className="container">
-          {homeProduct.map((curElm) => {
-            return (
-              <div className="box" key={curElm.id}>
-                <div className="img_box">
-                  <img src={curElm.Img} alt={curElm.Title}></img>
+          {homeProduct
+            .filter((curElm) => {
+              return search.toLowerCase() === ""
+                ? curElm
+                : curElm.Cat.toLowerCase().includes(search);
+            })
+            .map((curElm) => {
+              return (
+                <div className="box" key={curElm.id}>
+                  <div className="img_box">
+                    <img src={curElm.Img} alt={curElm.Title}></img>
 
-                  <div className="icon">
-                    <li onClick={() => clickOrder(curElm)}>
-                      {" "}
-                      <BsCart2 />
-                    </li>
-                    <li onClick={() => view(curElm)}>
-                      {" "}
-                      <BsEye />
-                    </li>
-                    <li> </li>
+                    <div className="icon">
+                      <li onClick={() => clickOrder(curElm)}>
+                        {" "}
+                        <BsCart2 />
+                      </li>
+                      <li onClick={() => view(curElm)}>
+                        {" "}
+                        <BsEye />
+                      </li>
+                      <li> </li>
+                    </div>
+                  </div>
+                  <div className="detail">
+                    <p>{curElm.Cat}</p>
+                    <h3>{curElm.Title}</h3>
+                    <h4>{curElm.Price}</h4>
+                    <p className="qty-1">{curElm.quantity}</p>
                   </div>
                 </div>
-                <div className="detail">
-                  <p>{curElm.Cat}</p>
-                  <h3>{curElm.Title}</h3>
-                  <h4>{curElm.Price}</h4>
-                  <p className="qty-1">{curElm.quantity}</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
       <div className="banner">

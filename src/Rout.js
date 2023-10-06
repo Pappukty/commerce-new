@@ -29,6 +29,9 @@ const Rout = ({
   setIsAuth,
   searchbtn,
   IsAuth,
+  searchbtn1,
+  homeProduct,
+  setHomeProduct,
 }) => {
   // const { isLogin, setIsLogin } = useStateValue();
   const { userLogin } = useAuthContext();
@@ -43,7 +46,11 @@ const Rout = ({
           path="/"
           element={
             userLogin ? (
-              <Header IsAuth={IsAuth} />
+              <Header
+                IsAuth={IsAuth}
+                homeProduct={homeProduct}
+                searchbtn1={searchbtn1}
+              />
             ) : (
               <Login setIsAuth={setIsAuth} />
             )
@@ -61,7 +68,9 @@ const Rout = ({
                 setClose={setClose}
                 addtocart={addtocart}
                 IsAuth={IsAuth}
-                searchbtn={searchbtn}
+                searchbtn1={searchbtn1}
+                homeProduct={homeProduct}
+                setHomeProduct={setHomeProduct}
               />
             }
           />

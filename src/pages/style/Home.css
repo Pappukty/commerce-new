@@ -4,6 +4,49 @@ home.css * {
   font-family: sans-serif;
   box-sizing: border-box;
 }
+.search_box-1 {
+  width: 99%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+}
+.search_box-1 input {
+  width: 23%;
+  margin-bottom: 1rem;
+  position: static;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  margin: 1rem 0.2rem;
+  padding: 10px 30px;
+  border: 3px solid #0989ff;
+  /* width: 180px; */
+  color: #010f1c;
+  margin-top: -3.4rem;
+  border-radius: 5px;
+}
+.search_box-1 button {
+  width: 10%;
+  font-size: 12px;
+  font-weight: 600;
+  border: 3px solid #0989ff;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 20px;
+  cursor: pointer;
+  margin: 1rem 0.2rem;
+  background: #0989ff;
+  color: #ecf2f7;
+  margin-top: -3.4rem;
+  border-radius: 5px;
+}
 .top_banner {
   padding: 30px 40px;
   width: 100%;
@@ -137,9 +180,15 @@ home.css * {
   margin-bottom: 20px;
 }
 .product .container {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
+  flex-wrap: wrap; */
+  width: 100%;
+  margin: 0 0.5rem;
   flex-wrap: wrap;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 .product .container .box {
   padding: 10px 20px;
@@ -357,6 +406,45 @@ home.css * {
 }
 
 @media (max-width: 765px) {
+  .search_box-1 {
+    width: 99%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
+  }
+  .search_box-1 input {
+    width: 40%;
+
+    position: static;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    margin: 1rem 0.3rem;
+    padding: 8px 20px;
+    border: 3px solid #0989ff;
+    /* width: 180px; */
+    color: #010f1c;
+  }
+  .search_box-1 button {
+    width: 9%;
+    font-size: 11px;
+    font-weight: 600;
+    border: 3px solid #0989ff;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    cursor: pointer;
+    margin: 1rem 0.3rem;
+    background: #0989ff;
+    color: #ecf2f7;
+  }
   .top_banner {
     padding: 20px 30px;
     width: 100%;

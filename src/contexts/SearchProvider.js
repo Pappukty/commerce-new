@@ -7,7 +7,7 @@ export const SearchContext = createContext();
 export const SearchProvider = ({ children }) => {
   // const [allProduct, setAllProduct] = useState(HomeProduct);
   const [userLogin, setUserLogin] = useState(false);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   ///search  filter method
 
   // const searchbtn = (allProduct) => {
@@ -17,7 +17,7 @@ export const SearchProvider = ({ children }) => {
   // const allProduct = HomeProduct.filter((curElm) =>)
 
   return (
-    <SearchContext.Provider value={{ search, setSearch, }}>
+    <SearchContext.Provider value={{ search, setSearch }}>
       {children}
     </SearchContext.Provider>
   );
